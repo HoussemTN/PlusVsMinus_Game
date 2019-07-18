@@ -134,6 +134,7 @@ class _PlusVsMinusState extends State<PlusVsMinus> {
       Container(
         child: Column(
           children: <Widget>[
+
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
@@ -151,6 +152,7 @@ class _PlusVsMinusState extends State<PlusVsMinus> {
             Expanded(
               child: Center(
                 child: FAProgressBar(
+                  backgroundColor: Colors.greenAccent[100],
                   size: MediaQuery.of(context).size.width / 1.01,
                   borderRadius: 20.0,
                   direction: Axis.vertical,
