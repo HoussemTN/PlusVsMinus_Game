@@ -53,11 +53,11 @@ class _HomePageState extends State<HomePage>
                     highlightColor: Colors.blue,
                     splashColor: Colors.blueAccent,
                     child: Text(
-                      "Play",
+                      "Single Game",
                       style: TextStyle(color: Colors.white, fontSize: 22.0),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, "Gamemode");
+                      Navigator.pushNamed(context, "SingleGame");
                     },
                   ),
                 ),
@@ -77,10 +77,12 @@ class _HomePageState extends State<HomePage>
                     color: Colors.indigo,
                     highlightColor: Colors.blue,
                     child: Text(
-                      "How to Play",
+                      "Mutliplayer Game",
                       style: TextStyle(color: Colors.white, fontSize: 22.0),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, "Gamemode");
+                    },
                   ),
                 ),
               ),

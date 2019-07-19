@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class GamemodeMenu extends StatefulWidget {
+class MultiPlayer extends StatefulWidget {
   @override
-  _GamemodeMenuState createState() => _GamemodeMenuState();
+  _MultiPlayerState createState() => _MultiPlayerState();
 }
 
-class _GamemodeMenuState extends State<GamemodeMenu>
+class _MultiPlayerState extends State<MultiPlayer>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
   Animation _animation;
@@ -94,54 +94,10 @@ class _GamemodeMenuState extends State<GamemodeMenu>
                     padding: EdgeInsets.only(bottom: 40),
                   ),
 
-                  /// 1 Player Button
-                  Container(
-                    width: MediaQuery.of(context).size.width / 1.3,
-                    height: MediaQuery.of(context).size.height / 9,
-                    child: ScaleTransition(
-                      alignment: Alignment.center,
-                      scale: _animation,
-                      child: RaisedButton(
-                        shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(5.0)),
-                        elevation: 5,
-                        color: Colors.indigo,
-                        highlightColor: Colors.blue,
-                        splashColor: Colors.blueAccent,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Container(
-                                height: 40.0,
-                                width: 40.0,
-                                child: Image.asset(
-                                    "assets/images/game-controller.png")),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 6.0, left: 8.0),
-                              child: Text(
-                                "1 Player ",
-                                style: TextStyle(
-                                    color: Colors.yellowAccent,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 24),
-                              ),
-                            ),
-                          ],
-                        ),
-                        onPressed: () {
-                          Navigator.pushNamed(context, "PlusVsMinus");
-                        },
-                      ),
-                    ),
-                  ),
-
                   /// Padding Between 1 player Button and 2 Players Button
                   Padding(
                     padding: EdgeInsets.only(top: 12.0),
                   ),
-
                   /// 2 Player Button
                   Container(
                     width: MediaQuery.of(context).size.width / 1.3,
@@ -221,7 +177,9 @@ class _GamemodeMenuState extends State<GamemodeMenu>
                             ),
                           ],
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context,'PlusVsMinus4P');
+                        },
                       ),
                     ),
                   ),
