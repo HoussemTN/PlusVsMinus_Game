@@ -97,7 +97,7 @@ class _SingleGameEasyState extends State<SingleGameEasy> {
     if (_counter != 0 && _counter != 100 && _gameStarted==true) {
       if (!mounted) return;
       setState(() {
-        _counter=_counter-7;
+        _counter=_counter-9;
       });
       if (_counter <= 0) {
         if (!mounted) return;
