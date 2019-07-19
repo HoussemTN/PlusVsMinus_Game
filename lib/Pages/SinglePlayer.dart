@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
-
-class MultiPlayer extends StatefulWidget {
+class SinglePlayer extends StatefulWidget {
   @override
-  _MultiPlayerState createState() => _MultiPlayerState();
+  _SinglePlayerState createState() => _SinglePlayerState();
 }
 
-class _MultiPlayerState extends State<MultiPlayer>
+class _SinglePlayerState extends State<SinglePlayer>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
   Animation _animation;
@@ -73,18 +72,18 @@ class _MultiPlayerState extends State<MultiPlayer>
                         splashColor: Colors.blueAccent,
                         child: Container(
                             child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              "Choose Number of Players",
-                              style: TextStyle(
-                                  color: Colors.yellowAccent,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 20),
-                            ),
-                          ],
-                        )),
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Text(
+                                  "Choose The Difficulty",
+                                  style: TextStyle(
+                                      color: Colors.yellowAccent,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 20),
+                                ),
+                              ],
+                            )),
                         onPressed: null,
                       ),
                     ),
@@ -99,7 +98,7 @@ class _MultiPlayerState extends State<MultiPlayer>
                   Padding(
                     padding: EdgeInsets.only(top: 12.0),
                   ),
-                  /// 2 Player Button
+                  /// Single Game Easy
                   Container(
                     width: MediaQuery.of(context).size.width / 1.3,
                     height: MediaQuery.of(context).size.height / 9,
@@ -123,32 +122,33 @@ class _MultiPlayerState extends State<MultiPlayer>
                             ),
                             Padding(
                               padding:
-                                  const EdgeInsets.only(top: 6.0, left: 8.0),
-                              child: Text(
-                                "2 Players",
-                                style: TextStyle(
-                                    color: Colors.yellowAccent,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 24),
+                              const EdgeInsets.only(top: 6.0, left: 8.0),
+                              child: Container(
+                                width: 100,
+                                child: Text(
+                                  "Easy",
+                                  style: TextStyle(
+                                      color: Colors.yellowAccent,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 24),
+                                ),
                               ),
                             ),
                           ],
                         ),
                         onPressed: () {
-
-                          Navigator.pushNamed(context,'PlusVsMinus');
-
+                          Navigator.pushNamed(context,'SingleGameEasy');
                         },
                       ),
                     ),
                   ),
 
-                  /// padding Between 2 Players and 4 Players
+                  /// padding Between Easy and Medium
                   Padding(
                     padding: EdgeInsets.only(top: 12.0),
                   ),
 
-                  /// 4 Players Button
+                  /// Medium Button
                   Container(
                     width: MediaQuery.of(context).size.width / 1.3,
                     height: MediaQuery.of(context).size.height / 9,
@@ -171,19 +171,71 @@ class _MultiPlayerState extends State<MultiPlayer>
                                     "assets/images/game-controller.png")),
                             Padding(
                               padding:
-                                  const EdgeInsets.only(top: 6.0, left: 8.0),
-                              child: Text(
-                                "4 Players",
-                                style: TextStyle(
-                                    color: Colors.yellowAccent,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 24),
+                              const EdgeInsets.only(top: 6.0, left: 8.0),
+                              child: Container(
+                                width: 100,
+                                child: Text(
+                                  "Medium",
+                                  style: TextStyle(
+                                      color: Colors.yellowAccent,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 24),
+                                ),
                               ),
                             ),
                           ],
                         ),
                         onPressed: () {
-                          Navigator.pushNamed(context,'PlusVsMinus4P');
+                          Navigator.pushNamed(context,'SingleGameMedium');
+                        },
+                      ),
+                    ),
+                  ),
+
+                  /// padding Between Medium and Hard
+                  Padding(
+                    padding: EdgeInsets.only(top: 12.0),
+                  ),
+
+                  /// Hard Button
+                  Container(
+                    width: MediaQuery.of(context).size.width / 1.3,
+                    height: MediaQuery.of(context).size.height / 9,
+                    child: ScaleTransition(
+                      alignment: Alignment.center,
+                      scale: _animation,
+                      child: RaisedButton(
+                        shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(5.0)),
+                        color: Colors.indigo,
+                        highlightColor: Colors.blue,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Container(
+                                height: 40.0,
+                                width: 40.0,
+                                child: Image.asset(
+                                    "assets/images/game-controller.png")),
+                            Padding(
+                              padding:
+                              const EdgeInsets.only(top: 6.0, left: 8.0),
+                              child: Container(
+                                width: 100,
+                                child: Text(
+                                  "Hard",
+                                  style: TextStyle(
+                                      color: Colors.yellowAccent,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 24),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(context,'SingleGameHard');
                         },
                       ),
                     ),

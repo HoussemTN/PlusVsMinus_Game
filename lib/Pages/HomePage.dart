@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:speedpusher/library/globals.dart' as globals;
 class HomePage extends StatefulWidget {
+
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -9,8 +12,13 @@ class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
   Animation _animation;
+
+
+
   @override
   void initState() {
+
+
     _controller = AnimationController(
       vsync: this,
       duration: Duration(seconds: 1),
@@ -21,6 +29,8 @@ class _HomePageState extends State<HomePage>
 
   @override
   dispose() {
+    /// audio Dispose
+
     _controller.dispose();
     super.dispose();
   }
@@ -57,7 +67,7 @@ class _HomePageState extends State<HomePage>
                       style: TextStyle(color: Colors.white, fontSize: 22.0),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, "SingleGame");
+                      Navigator.pushNamed(context, "SinglePlayer");
                     },
                   ),
                 ),

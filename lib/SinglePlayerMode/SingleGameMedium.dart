@@ -1,13 +1,14 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
-class PlusVsMinus4P extends StatefulWidget {
+class SingleGameMedium extends StatefulWidget {
   @override
-  _PlusVsMinus4PState createState() => _PlusVsMinus4PState();
+  _SingleGameMediumState createState() => _SingleGameMediumState();
 }
 
-class _PlusVsMinus4PState extends State<PlusVsMinus4P> {
+class _SingleGameMediumState extends State<SingleGameMedium> {
   /// Variables initialization
   int _counter = 50;
   // ignore: unused_field
@@ -15,7 +16,8 @@ class _PlusVsMinus4PState extends State<PlusVsMinus4P> {
   bool _plusWinner = false;
   // ignore: unused_field
   bool _minusWinner = false;
-
+  bool _gameStarted = false ;
+  Timer timer;
   /// Show a Alert Dialog
   void _showDialog(String body) {
     Alert(
@@ -38,7 +40,7 @@ class _PlusVsMinus4PState extends State<PlusVsMinus4P> {
       ),
       type: AlertType.none,
       title: "Game Over",
-      desc: _plusWinner == true ? "Plus team Wins" : "Minus team Wins",
+      desc: _plusWinner == true ? "You Win" : "You lose",
       buttons: [
         DialogButton(
           child: Text(
@@ -69,31 +71,38 @@ class _PlusVsMinus4PState extends State<PlusVsMinus4P> {
 
   /// Plus Counter
   void _incrementCounter() {
+
     if (_counter != 0 && _counter != 100) {
+      if (!mounted) return;
       setState(() {
-        _counter = _counter + 2;
+        _gameStarted=true;
+        _counter=_counter+4;
       });
       if (_counter >= 100) {
+        if (!mounted) return;
         setState(() {
           _plusWinner = true;
           _gameOver = true;
         });
+
         gameOver();
       }
     }
   }
-
   /// Minus Counter
   void _decrementCounter() {
-    if (_counter != 0 && _counter != 100) {
+    if (_counter != 0 && _counter != 100 && _gameStarted==true) {
+      if (!mounted) return;
       setState(() {
-        _counter = _counter - 2;
+        _counter=_counter-8;
       });
       if (_counter <= 0) {
+        if (!mounted) return;
         setState(() {
           _minusWinner = true;
           _gameOver = true;
         });
+
         gameOver();
       }
     }
@@ -101,19 +110,22 @@ class _PlusVsMinus4PState extends State<PlusVsMinus4P> {
 
   /// Call The Alert Dialog And Show The Winner
   gameOver() {
-    if (_gameOver = true) {
-      _showDialog(
-          _plusWinner == true ? "Plus is the Winner" : "Minus is the Winner");
+    if (_gameOver == true) {
+      timer?.cancel();
+      _showDialog(_plusWinner == true ? "Plus is the Winner" : "Minus is the Winner");
     }
   }
-
   /// Reset Variables to their initial State
   void _reset() {
     setState(() {
+      timer = Timer.periodic(
+          Duration( milliseconds: 350 ), (Timer t) => _decrementCounter( ) );
       _plusWinner = false;
       _minusWinner = false;
       _counter = 50;
       _gameOver = false;
+      _gameStarted=false;
+
     });
   }
 
@@ -128,41 +140,48 @@ class _PlusVsMinus4PState extends State<PlusVsMinus4P> {
     return L;
   }
 
+
+  @override
+  void initState() {
+    super.initState();
+    if(!_gameOver) {
+      timer = Timer.periodic(
+          Duration( milliseconds: 350 ), (Timer t) => _decrementCounter( ) );
+    }else{ timer.cancel();}
+
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body:
+      Container(
         child: Column(
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      new FloatingActionButton(
-                        heroTag: "Minus1",
-                        onPressed: () => _decrementCounter(),
-                        child: new Icon(Icons.remove),
-                        backgroundColor: Colors.red,
-                      ),
-                    ],
+                  Container(
+                    color: Colors.indigo,
+                    child: IconButton(
+                      icon: Icon(Icons.arrow_back),
+                      color: Colors.yellowAccent,
+                      onPressed: () => Navigator.of(context).pop(),
+                    ),
                   ),
-
-                  /// Space Betwwen two Minus Buttons
-                  Expanded(
-                    child: Container(),
-                  ),
+                  Expanded(child:
+                  Container(),),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      new FloatingActionButton(
-                        heroTag: "Minus2",
-                        onPressed: () => _decrementCounter(),
-                        child: new Icon(Icons.remove),
-                        backgroundColor: Colors.red,
-                      ),
+                      Text(
+                        '$_counter',
+                        style: Theme.of(context).textTheme.display1,),
                     ],
                   ),
                 ],
@@ -181,57 +200,25 @@ class _PlusVsMinus4PState extends State<PlusVsMinus4P> {
                   maxValue: 100,
                   changeColorValue: valueChanger(),
                   progressColor: _counter > 10 ? Colors.blue : Colors.red,
-                  changeProgressColor:
-                      _counter >= 50 ? Colors.green : Colors.red,
+                  changeProgressColor: _counter >= 50 ? Colors.green : Colors.red,
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      new FloatingActionButton(
-                        heroTag: "Plus1",
-                        onPressed: _incrementCounter,
-                        child: Icon(
-                          Icons.add,
-                        ),
-                        backgroundColor: Colors.green,
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    child: Center(
-                      child: Text(
-                        '$_counter',
-                        style: Theme.of(context).textTheme.display1,
-                      ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  FloatingActionButton(
+                    heroTag: "Plus",
+                    onPressed: _incrementCounter,
+                    child: Icon(
+                      Icons.add,
                     ),
+                    backgroundColor: Colors.green,
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      new FloatingActionButton(
-                        heroTag: "Plus2",
-                        onPressed: _incrementCounter,
-                        child: Icon(
-                          Icons.add,
-                        ),
-                        backgroundColor: Colors.green,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),

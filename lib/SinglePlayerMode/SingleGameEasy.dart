@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
-class SingleGame extends StatefulWidget {
+
+class SingleGameEasy extends StatefulWidget {
   @override
-  _SingleGameState createState() => _SingleGameState();
+  _SingleGameEasyState createState() => _SingleGameEasyState();
 }
 
-class _SingleGameState extends State<SingleGame> {
+class _SingleGameEasyState extends State<SingleGameEasy> {
   /// Variables initialization
   int _counter = 50;
   // ignore: unused_field
@@ -18,6 +19,8 @@ class _SingleGameState extends State<SingleGame> {
   bool _minusWinner = false;
   bool _gameStarted = false ;
   Timer timer;
+
+
   /// Show a Alert Dialog
   void _showDialog(String body) {
     Alert(
@@ -94,7 +97,7 @@ class _SingleGameState extends State<SingleGame> {
     if (_counter != 0 && _counter != 100 && _gameStarted==true) {
       if (!mounted) return;
       setState(() {
-        _counter=_counter-8;
+        _counter=_counter-7;
       });
       if (_counter <= 0) {
         if (!mounted) return;
@@ -119,7 +122,7 @@ class _SingleGameState extends State<SingleGame> {
   void _reset() {
     setState(() {
        timer = Timer.periodic(
-          Duration( milliseconds: 500 ), (Timer t) => _decrementCounter( ) );
+          Duration( milliseconds: 350 ), (Timer t) => _decrementCounter( ) );
       _plusWinner = false;
       _minusWinner = false;
       _counter = 50;
@@ -146,7 +149,7 @@ class _SingleGameState extends State<SingleGame> {
     super.initState();
     if(!_gameOver) {
       timer = Timer.periodic(
-          Duration( milliseconds: 500 ), (Timer t) => _decrementCounter( ) );
+          Duration( milliseconds: 350 ), (Timer t) => _decrementCounter( ) );
     }else{ timer.cancel();}
 
   }

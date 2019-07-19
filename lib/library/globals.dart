@@ -1,0 +1,3 @@
+library speedpusher.globals;
+
+
