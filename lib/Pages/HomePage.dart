@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:speedpusher/library/globals.dart' as globals;
 class HomePage extends StatefulWidget {
 
 
@@ -12,7 +11,6 @@ class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
   Animation _animation;
-
 
 
   @override
@@ -30,7 +28,6 @@ class _HomePageState extends State<HomePage>
   @override
   dispose() {
     /// audio Dispose
-
     _controller.dispose();
     super.dispose();
   }
