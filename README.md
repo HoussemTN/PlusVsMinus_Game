@@ -1,3 +1,5 @@
+
+[![Travis](https://travis-ci.com/HoussemTN/PlusVsMinus_Game.svg?branch=master)]()
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1318f35796c74e24a57816a361872baf)](https://app.codacy.com/app/HoussemTN/PlusVsMinus_Game?utm_source=github.com&utm_medium=referral&utm_content=HoussemTN/PlusVsMinus_Game&utm_campaign=Badge_Grade_Dashboard)
 
 # PlusVsMinus Game
