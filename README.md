@@ -4,13 +4,13 @@ A new Flutter 2D Game.
 
 ## Screenshots
 
-<img  alt="HomePage" src="https://github.com/HoussemTN/plusvsminus/blob/master/screenshots/HomePage.png?raw=true" heigth="250px" width="300px"/>
-<img  alt="HomePage" src="https://github.com/HoussemTN/plusvsminus/blob/master/screenshots/SignleGame_Difficulty_Levels.png?raw=true" heigth="250px" width="300px"/>
-<img  alt="HomePage" src="https://github.com/HoussemTN/plusvsminus/blob/master/screenshots/SingleGame_EasyDifficulty.png?raw=true" heigth="250px" width="300px"/>
-<img  alt="HomePage" src="https://github.com/HoussemTN/plusvsminus/blob/master/screenshots/SingleGame_LosingTheGame.png?raw=true" heigth="250px" width="300px"/>
-<img  alt="HomePage" src="https://github.com/HoussemTN/plusvsminus/blob/master/screenshots/MultiPlayerGame_Players_Number.png?raw=true" heigth="250px" width="300px"/>
-<img  alt="HomePage" src="https://github.com/HoussemTN/plusvsminus/blob/master/screenshots/MutliPlayerGame_4Players.png?raw=true" heigth="250px" width="300px"/>
-<img  alt="HomePage" src="https://github.com/HoussemTN/plusvsminus/blob/master/screenshots/MultiPlayerGame_PlusTeamWinningTheGame.png?raw=true" heigth="250px" width="300px"/>
+<img  alt="HomePage" src="https://github.com/HoussemTN/PlusVsMinus_Game/blob/master/ScreenShots/HomePage.png?raw=true" heigth="250px" width="300px"/>
+<img  alt="SignleGame_Difficulty_Levels" src="https://github.com/HoussemTN/PlusVsMinus_Game/blob/master/ScreenShots/SignleGame_Difficulty_Levels.png?raw=true" heigth="250px" width="300px"/>
+<img  alt="SingleGame_EasyDifficulty" src="https://github.com/HoussemTN/PlusVsMinus_Game/blob/master/ScreenShots/SingleGame_EasyDifficulty.png?raw=true" heigth="250px" width="300px"/>
+<img  alt="SingleGame_LosingTheGame" src="https://github.com/HoussemTN/PlusVsMinus_Game/blob/master/ScreenShots/SingleGame_LosingTheGame.png?raw=true" heigth="250px" width="300px"/>
+<img  alt="MultiPlayerGame_Players_Number" src="https://github.com/HoussemTN/PlusVsMinus_Game/blob/master/ScreenShots/MultiPlayerGame_Players_Number.png?raw=true" heigth="250px" width="300px"/>
+<img  alt="MutliPlayerGame_4Players" src="https://github.com/HoussemTN/PlusVsMinus_Game/blob/master/ScreenShots/MutliPlayerGame_4Players.png?raw=true" heigth="250px" width="300px"/>
+<img  alt="MultiPlayerGame_PlusTeamWinningTheGame" src="https://github.com/HoussemTN/PlusVsMinus_Game/blob/master/ScreenShots/MultiPlayerGame_PlusTeamWinningTheGame.png?raw=true" heigth="250px" width="300px"/>
 
 ### Want to contribute
 
