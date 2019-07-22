@@ -7,15 +7,17 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  Timer timer  ;
   @override
   void initState() {
+    timer = Timer(Duration(seconds: 5), () => Navigator.pushReplacementNamed(context, "Home"));
     super.initState();
-    Timer(Duration(seconds: 5),
-            () => Navigator.pushReplacementNamed(context, "Home"));
+
   }
 
   @override
   void dispose() {
+    timer.cancel();
     super.dispose();
   }
 
