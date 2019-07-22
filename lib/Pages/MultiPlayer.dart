@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../library/globals.dart' as globals;
 
 class MultiPlayer extends StatefulWidget {
   @override
@@ -17,11 +17,14 @@ class _MultiPlayerState extends State<MultiPlayer>
       duration: Duration(seconds: 1),
     );
     _animation = Tween(begin: 0.0, end: 1.0).animate(_controller);
+    /// Load Audio
+    globals.player.loadAll(["clic.wav"]);
     super.initState();
   }
 
   @override
   dispose() {
+    globals.player.clearCache();
     _controller.dispose();
     super.dispose();
   }
@@ -135,7 +138,7 @@ class _MultiPlayerState extends State<MultiPlayer>
                           ],
                         ),
                         onPressed: () {
-
+                          globals.player.play('clic.wav');
                           Navigator.pushNamed(context,'PlusVsMinus');
 
                         },
@@ -183,6 +186,7 @@ class _MultiPlayerState extends State<MultiPlayer>
                           ],
                         ),
                         onPressed: () {
+                          globals.player.play('clic.wav');
                           Navigator.pushNamed(context,'PlusVsMinus4P');
                         },
                       ),

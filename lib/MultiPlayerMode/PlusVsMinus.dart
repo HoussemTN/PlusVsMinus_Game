@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import '../library/globals.dart' as globals;
+
 
 class PlusVsMinus extends StatefulWidget {
   @override
@@ -103,6 +105,7 @@ class _PlusVsMinusState extends State<PlusVsMinus> {
   /// Call The Alert Dialog And Show The Winner
   gameOver() {
     if (_gameOver = true) {
+       globals.player.play( _plusWinner == true ? "victory.wav" : "laugh.wav");
       _showDialog(_plusWinner == true ? "Plus is the Winner" : "Minus is the Winner");
     }
   }
@@ -125,6 +128,18 @@ class _PlusVsMinusState extends State<PlusVsMinus> {
       L = 10;
     }
     return L;
+  }
+
+  @override
+  void dispose() {
+    globals.player.clear('victory.wav');
+    super.dispose();
+  }
+
+ @override
+  void initState() {
+    globals.player.load('victory.wav');
+    super.initState();
   }
 
   @override

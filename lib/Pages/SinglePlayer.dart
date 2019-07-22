@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../library/globals.dart' as globals;
 class SinglePlayer extends StatefulWidget {
   @override
   _SinglePlayerState createState() => _SinglePlayerState();
@@ -16,11 +16,13 @@ class _SinglePlayerState extends State<SinglePlayer>
       duration: Duration(seconds: 1),
     );
     _animation = Tween(begin: 0.0, end: 1.0).animate(_controller);
+    globals.player.loadAll(['clic.wav']);
     super.initState();
   }
 
   @override
   dispose() {
+    globals.player.clearCache();
     _controller.dispose();
     super.dispose();
   }
@@ -137,6 +139,7 @@ class _SinglePlayerState extends State<SinglePlayer>
                           ],
                         ),
                         onPressed: () {
+                          globals.player.play('clic.wav');
                           Navigator.pushNamed(context,'SingleGameEasy');
                         },
                       ),
@@ -186,6 +189,7 @@ class _SinglePlayerState extends State<SinglePlayer>
                           ],
                         ),
                         onPressed: () {
+                          globals.player.play('clic.wav');
                           Navigator.pushNamed(context,'SingleGameMedium');
                         },
                       ),
@@ -235,6 +239,7 @@ class _SinglePlayerState extends State<SinglePlayer>
                           ],
                         ),
                         onPressed: () {
+                          globals.player.play('clic.wav');
                           Navigator.pushNamed(context,'SingleGameHard');
                         },
                       ),

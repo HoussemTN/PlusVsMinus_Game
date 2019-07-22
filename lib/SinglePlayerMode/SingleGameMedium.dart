@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import '../library/globals.dart' as globals;
 
 class SingleGameMedium extends StatefulWidget {
   @override
@@ -35,11 +36,11 @@ class _SingleGameMediumState extends State<SingleGameMedium> {
           ),
         ),
         titleStyle: TextStyle(
-          color: Colors.red,
+          color: _plusWinner == true ? Colors.green : Colors.red,
         ),
       ),
       type: AlertType.none,
-      title: "Game Over",
+      title: _plusWinner == true ? "Victory" : "Defeat",
       desc: _plusWinner == true ? "You Win" : "You lose",
       buttons: [
         DialogButton(
@@ -110,6 +111,7 @@ class _SingleGameMediumState extends State<SingleGameMedium> {
 
   /// Call The Alert Dialog And Show The Winner
   gameOver() {
+    globals.player.play(_plusWinner == true ? 'victory.wav' : 'defeat.wav');
     if (_gameOver == true) {
       timer?.cancel();
       _showDialog(_plusWinner == true ? "Plus is the Winner" : "Minus is the Winner");
@@ -143,6 +145,7 @@ class _SingleGameMediumState extends State<SingleGameMedium> {
 
   @override
   void initState() {
+    globals.player.loadAll(['defeat.wav','victory.wav']);
     super.initState();
     if(!_gameOver) {
       timer = Timer.periodic(
@@ -153,6 +156,7 @@ class _SingleGameMediumState extends State<SingleGameMedium> {
 
   @override
   void dispose() {
+    globals.player.clearCache();
     timer?.cancel();
     super.dispose();
   }

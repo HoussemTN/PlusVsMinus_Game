@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import '../library/globals.dart'as globals;
 
 class HomePage extends StatefulWidget {
-
-
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -15,19 +14,19 @@ class _HomePageState extends State<HomePage>
 
   @override
   void initState() {
-
-
     _controller = AnimationController(
       vsync: this,
       duration: Duration(seconds: 1),
     );
     _animation = Tween(begin: 0.0, end: 1.0).animate(_controller);
+    globals.player.loadAll(['clic.wav']);
     super.initState();
   }
 
   @override
   dispose() {
     /// audio Dispose
+     globals.player.clearCache();
     _controller.dispose();
     super.dispose();
   }
@@ -64,6 +63,7 @@ class _HomePageState extends State<HomePage>
                       style: TextStyle(color: Colors.white, fontSize: 22.0),
                     ),
                     onPressed: () {
+                      globals.player.play('clic.wav');
                       Navigator.pushNamed(context, "SinglePlayer");
                     },
                   ),
@@ -88,6 +88,7 @@ class _HomePageState extends State<HomePage>
                       style: TextStyle(color: Colors.white, fontSize: 22.0),
                     ),
                     onPressed: () {
+                      globals.player.play('clic.wav');
                       Navigator.pushNamed(context, "Gamemode");
                     },
                   ),
@@ -111,7 +112,9 @@ class _HomePageState extends State<HomePage>
                       "Options",
                       style: TextStyle(color: Colors.white, fontSize: 22.0),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      globals.player.play('clic.wav');
+                    },
                   ),
                 ),
               ),

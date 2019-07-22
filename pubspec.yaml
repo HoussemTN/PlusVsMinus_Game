@@ -22,6 +22,7 @@ dependencies:
   flutter_animation_progress_bar: 1.0.0
   rflutter_alert: ^1.0.3
   gradient_app_bar: ^0.0.1
+  audioplayers: ^0.13.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -50,6 +51,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/music/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
