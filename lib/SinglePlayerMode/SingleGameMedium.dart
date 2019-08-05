@@ -17,8 +17,9 @@ class _SingleGameMediumState extends State<SingleGameMedium> {
   bool _plusWinner = false;
   // ignore: unused_field
   bool _minusWinner = false;
-  bool _gameStarted = false ;
+  bool _gameStarted = false;
   Timer timer;
+
   /// Show a Alert Dialog
   void _showDialog(String body) {
     Alert(
@@ -72,12 +73,11 @@ class _SingleGameMediumState extends State<SingleGameMedium> {
 
   /// Plus Counter
   void _incrementCounter() {
-
     if (_counter != 0 && _counter != 100) {
       if (!mounted) return;
       setState(() {
-        _gameStarted=true;
-        _counter=_counter+4;
+        _gameStarted = true;
+        _counter = _counter + 4;
       });
       if (_counter >= 100) {
         if (!mounted) return;
@@ -90,12 +90,13 @@ class _SingleGameMediumState extends State<SingleGameMedium> {
       }
     }
   }
+
   /// Minus Counter
   void _decrementCounter() {
-    if (_counter != 0 && _counter != 100 && _gameStarted==true) {
+    if (_counter != 0 && _counter != 100 && _gameStarted == true) {
       if (!mounted) return;
       setState(() {
-        _counter=_counter-13;
+        _counter = _counter - 9;
       });
       if (_counter <= 0) {
         if (!mounted) return;
@@ -114,20 +115,21 @@ class _SingleGameMediumState extends State<SingleGameMedium> {
     globals.player.play(_plusWinner == true ? 'victory.wav' : 'defeat.wav');
     if (_gameOver == true) {
       timer?.cancel();
-      _showDialog(_plusWinner == true ? "Plus is the Winner" : "Minus is the Winner");
+      _showDialog(
+          _plusWinner == true ? "Plus is the Winner" : "Minus is the Winner");
     }
   }
+
   /// Reset Variables to their initial State
   void _reset() {
     setState(() {
       timer = Timer.periodic(
-          Duration( milliseconds: 350 ), (Timer t) => _decrementCounter( ) );
+          Duration(milliseconds: 350), (Timer t) => _decrementCounter());
       _plusWinner = false;
       _minusWinner = false;
       _counter = 50;
       _gameOver = false;
-      _gameStarted=false;
-
+      _gameStarted = false;
     });
   }
 
@@ -142,16 +144,16 @@ class _SingleGameMediumState extends State<SingleGameMedium> {
     return L;
   }
 
-
   @override
   void initState() {
-    globals.player.loadAll(['defeat.wav','victory.wav']);
+    globals.player.loadAll(['defeat.wav', 'victory.wav']);
     super.initState();
-    if(!_gameOver) {
+    if (!_gameOver) {
       timer = Timer.periodic(
-          Duration( milliseconds: 350 ), (Timer t) => _decrementCounter( ) );
-    }else{ timer.cancel();}
-
+          Duration(milliseconds: 350), (Timer t) => _decrementCounter());
+    } else {
+      timer.cancel();
+    }
   }
 
   @override
@@ -160,11 +162,11 @@ class _SingleGameMediumState extends State<SingleGameMedium> {
     timer?.cancel();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:
-      Container(
+      body: Container(
         child: Column(
           children: <Widget>[
             Padding(
@@ -174,18 +176,22 @@ class _SingleGameMediumState extends State<SingleGameMedium> {
                   Container(
                     color: Colors.indigo,
                     child: IconButton(
-                      icon: Icon(Icons.arrow_back),
-                      color: Colors.yellowAccent,
-                      onPressed: () => Navigator.of(context).pop(),
-                    ),
+                        icon: Icon(Icons.arrow_back),
+                        color: Colors.yellowAccent,
+                        onPressed: () {
+                          globals.player.play('clic.wav');
+                          Navigator.of(context).pop();
+                        }),
                   ),
-                  Expanded(child:
-                  Container(),),
+                  Expanded(
+                    child: Container(),
+                  ),
                   Row(
                     children: <Widget>[
                       Text(
                         '$_counter',
-                        style: Theme.of(context).textTheme.display1,),
+                        style: Theme.of(context).textTheme.display1,
+                      ),
                     ],
                   ),
                 ],
@@ -204,7 +210,8 @@ class _SingleGameMediumState extends State<SingleGameMedium> {
                   maxValue: 100,
                   changeColorValue: valueChanger(),
                   progressColor: _counter > 10 ? Colors.blue : Colors.red,
-                  changeProgressColor: _counter >= 50 ? Colors.green : Colors.red,
+                  changeProgressColor:
+                      _counter >= 50 ? Colors.green : Colors.red,
                 ),
               ),
             ),

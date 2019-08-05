@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../library/globals.dart' as globals;
+
 class SinglePlayer extends StatefulWidget {
   @override
   _SinglePlayerState createState() => _SinglePlayerState();
@@ -44,10 +45,12 @@ class _SinglePlayerState extends State<SinglePlayer>
                 Container(
                   color: Colors.indigo,
                   child: IconButton(
-                    icon: Icon(Icons.arrow_back),
-                    color: Colors.yellowAccent,
-                    onPressed: () => Navigator.of(context).pop(),
-                  ),
+                      icon: Icon(Icons.arrow_back),
+                      color: Colors.yellowAccent,
+                      onPressed: () {
+                        globals.player.play('clic.wav');
+                        Navigator.of(context).pop();
+                      }),
                 )
               ],
             ),
@@ -74,18 +77,18 @@ class _SinglePlayerState extends State<SinglePlayer>
                         splashColor: Colors.blueAccent,
                         child: Container(
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Text(
-                                  "Choose The Difficulty",
-                                  style: TextStyle(
-                                      color: Colors.yellowAccent,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 20),
-                                ),
-                              ],
-                            )),
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              "Choose The Difficulty",
+                              style: TextStyle(
+                                  color: Colors.yellowAccent,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20),
+                            ),
+                          ],
+                        )),
                         onPressed: null,
                       ),
                     ),
@@ -100,6 +103,7 @@ class _SinglePlayerState extends State<SinglePlayer>
                   Padding(
                     padding: EdgeInsets.only(top: 12.0),
                   ),
+
                   /// Single Game Easy
                   Container(
                     width: MediaQuery.of(context).size.width / 1.3,
@@ -124,7 +128,7 @@ class _SinglePlayerState extends State<SinglePlayer>
                             ),
                             Padding(
                               padding:
-                              const EdgeInsets.only(top: 6.0, left: 8.0),
+                                  const EdgeInsets.only(top: 6.0, left: 8.0),
                               child: Container(
                                 width: 100,
                                 child: Text(
@@ -140,7 +144,7 @@ class _SinglePlayerState extends State<SinglePlayer>
                         ),
                         onPressed: () {
                           globals.player.play('clic.wav');
-                          Navigator.pushNamed(context,'SingleGameEasy');
+                          Navigator.pushNamed(context, 'SingleGameEasy');
                         },
                       ),
                     ),
@@ -174,7 +178,7 @@ class _SinglePlayerState extends State<SinglePlayer>
                                     "assets/images/game-controller.png")),
                             Padding(
                               padding:
-                              const EdgeInsets.only(top: 6.0, left: 8.0),
+                                  const EdgeInsets.only(top: 6.0, left: 8.0),
                               child: Container(
                                 width: 100,
                                 child: Text(
@@ -190,7 +194,7 @@ class _SinglePlayerState extends State<SinglePlayer>
                         ),
                         onPressed: () {
                           globals.player.play('clic.wav');
-                          Navigator.pushNamed(context,'SingleGameMedium');
+                          Navigator.pushNamed(context, 'SingleGameMedium');
                         },
                       ),
                     ),
@@ -224,7 +228,7 @@ class _SinglePlayerState extends State<SinglePlayer>
                                     "assets/images/game-controller.png")),
                             Padding(
                               padding:
-                              const EdgeInsets.only(top: 6.0, left: 8.0),
+                                  const EdgeInsets.only(top: 6.0, left: 8.0),
                               child: Container(
                                 width: 100,
                                 child: Text(
@@ -240,7 +244,7 @@ class _SinglePlayerState extends State<SinglePlayer>
                         ),
                         onPressed: () {
                           globals.player.play('clic.wav');
-                          Navigator.pushNamed(context,'SingleGameHard');
+                          Navigator.pushNamed(context, 'SingleGameHard');
                         },
                       ),
                     ),

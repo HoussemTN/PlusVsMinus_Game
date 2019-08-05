@@ -17,6 +17,7 @@ class _MultiPlayerState extends State<MultiPlayer>
       duration: Duration(seconds: 1),
     );
     _animation = Tween(begin: 0.0, end: 1.0).animate(_controller);
+
     /// Load Audio
     globals.player.loadAll(["clic.wav"]);
     super.initState();
@@ -46,10 +47,12 @@ class _MultiPlayerState extends State<MultiPlayer>
                 Container(
                   color: Colors.indigo,
                   child: IconButton(
-                    icon: Icon(Icons.arrow_back),
-                    color: Colors.yellowAccent,
-                    onPressed: () => Navigator.of(context).pop(),
-                  ),
+                      icon: Icon(Icons.arrow_back),
+                      color: Colors.yellowAccent,
+                      onPressed: () {
+                        globals.player.play('clic.wav');
+                        Navigator.of(context).pop();
+                      }),
                 )
               ],
             ),
@@ -102,6 +105,7 @@ class _MultiPlayerState extends State<MultiPlayer>
                   Padding(
                     padding: EdgeInsets.only(top: 12.0),
                   ),
+
                   /// 2 Player Button
                   Container(
                     width: MediaQuery.of(context).size.width / 1.3,
@@ -139,8 +143,7 @@ class _MultiPlayerState extends State<MultiPlayer>
                         ),
                         onPressed: () {
                           globals.player.play('clic.wav');
-                          Navigator.pushNamed(context,'PlusVsMinus');
-
+                          Navigator.pushNamed(context, 'PlusVsMinus');
                         },
                       ),
                     ),
@@ -187,7 +190,7 @@ class _MultiPlayerState extends State<MultiPlayer>
                         ),
                         onPressed: () {
                           globals.player.play('clic.wav');
-                          Navigator.pushNamed(context,'PlusVsMinus4P');
+                          Navigator.pushNamed(context, 'PlusVsMinus4P');
                         },
                       ),
                     ),

@@ -103,7 +103,7 @@ class _PlusVsMinus4PState extends State<PlusVsMinus4P> {
   /// Call The Alert Dialog And Show The Winner
   gameOver() {
     if (_gameOver = true) {
-      globals.player.play('victory.wav');
+      globals.player.play(_plusWinner == true ? "victory.wav" : "laugh.wav");
       _showDialog(
           _plusWinner == true ? "Plus is the Winner" : "Minus is the Winner");
     }
@@ -138,7 +138,7 @@ class _PlusVsMinus4PState extends State<PlusVsMinus4P> {
 
   @override
   void initState() {
-    globals.player.load('victory.wav');
+    globals.player.loadAll(['victory.wav','laugh.wav']);
     super.initState();
   }
 

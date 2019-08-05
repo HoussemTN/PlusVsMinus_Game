@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import '../library/globals.dart' as globals;
@@ -144,58 +145,64 @@ class _PlusVsMinusState extends State<PlusVsMinus> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body:
-      Container(
-        child: Column(
-          children: <Widget>[
+    ///TODO Test top Phone App bar Overlays
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+        value: const SystemUiOverlayStyle(),
+        sized: false,
+        child:
+      Scaffold(
+        body: Container(
+          child: Column(
+            children: <Widget>[
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  new FloatingActionButton(
-                    heroTag: "Minus",
-                    onPressed: () => _decrementCounter(),
-                    child: new Icon(Icons.remove),
-                    backgroundColor: Colors.red,
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Center(
-                child: FAProgressBar(
-                  backgroundColor: Colors.greenAccent[100],
-                  size: MediaQuery.of(context).size.width / 1.01,
-                  borderRadius: 20.0,
-                  direction: Axis.vertical,
-                  verticalDirection: VerticalDirection.up,
-                  currentValue: _counter,
-                  displayText: '%',
-                  maxValue: 100,
-                  changeColorValue: valueChanger(),
-                  progressColor: _counter > 10 ? Colors.blue : Colors.red,
-                  changeProgressColor: _counter >= 50 ? Colors.green : Colors.red,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    new FloatingActionButton(
+                      heroTag: "Minus",
+                      onPressed: () => _decrementCounter(),
+                      child: new Icon(Icons.remove),
+                      backgroundColor: Colors.red,
+                    ),
+                  ],
                 ),
               ),
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
+              Expanded(
+                child: Center(
+                  child: FAProgressBar(
+                    backgroundColor: Colors.greenAccent[100],
+                    size: MediaQuery.of(context).size.width / 1.01,
+                    borderRadius: 20.0,
+                    direction: Axis.vertical,
+                    verticalDirection: VerticalDirection.up,
+                    currentValue: _counter,
+                    displayText: '%',
+                    maxValue: 100,
+                    changeColorValue: valueChanger(),
+                    progressColor: _counter > 10 ? Colors.blue : Colors.red,
+                    changeProgressColor: _counter >= 50 ? Colors.green : Colors.red,
+                  ),
+                ),
+              ),
+              Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.display1,
+              ),
+            ],
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          heroTag: "Plus",
+          onPressed: _incrementCounter,
+          child: Icon(
+            Icons.add,
+          ),
+          backgroundColor: Colors.green,
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        heroTag: "Plus",
-        onPressed: _incrementCounter,
-        child: Icon(
-          Icons.add,
-        ),
-        backgroundColor: Colors.green,
-      ),
+
     );
   }
 }
