@@ -184,7 +184,22 @@ class _SingleGameMediumState extends State<SingleGameMedium> {
                         }),
                   ),
                   Expanded(
-                    child: Container(),
+                    child: Container(  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          width: 50,
+                          height: 50,
+                          child : Image.asset("assets/images/mediumRobot.png"),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left:4.0),
+                          child: Container(
+                            child: Text("Neo 3",style: TextStyle(fontSize: 22,color: Colors.grey,fontWeight: FontWeight.w500),),
+                          ),
+                        ),
+                      ],
+                    ),),
                   ),
                   Row(
                     children: <Widget>[

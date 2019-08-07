@@ -184,7 +184,22 @@ class _SingleGameHardState extends State<SingleGameHard> {
                         }),
                   ),
                   Expanded(
-                    child: Container(),
+                    child: Container(  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          width: 50,
+                          height: 50,
+                          child : Image.asset("assets/images/hardRobot.png"),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left:4.0),
+                          child: Container(
+                            child: Text("Ateri",style: TextStyle(fontSize: 22,color: Colors.grey,fontWeight: FontWeight.w500),),
+                          ),
+                        ),
+                      ],
+                    ),),
                   ),
                   Row(
                     children: <Widget>[

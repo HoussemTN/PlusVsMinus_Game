@@ -184,7 +184,22 @@ class _SingleGameEasyState extends State<SingleGameEasy> {
                         }),
                   ),
                   Expanded(
-                    child: Container(),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            width: 50,
+                            height: 50,
+                            child : Image.asset("assets/images/easyRobot.png"),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left:8.0),
+                            child: Container(
+                              child: Text("Ted",style: TextStyle(fontSize: 22,color: Colors.grey,fontWeight: FontWeight.w500),),
+                            ),
+                          ),
+                        ],
+                      ),
                   ),
                   Row(
                     children: <Widget>[
