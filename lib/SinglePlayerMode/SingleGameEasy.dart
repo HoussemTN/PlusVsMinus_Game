@@ -193,7 +193,7 @@ class _SingleGameEasyState extends State<SingleGameEasy> {
                             child : Image.asset("assets/images/easyRobot.png"),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left:8.0),
+                            padding: const EdgeInsets.only(left:4.0),
                             child: Container(
                               child: Text("Ted",style: TextStyle(fontSize: 22,color: Colors.grey,fontWeight: FontWeight.w500),),
                             ),
