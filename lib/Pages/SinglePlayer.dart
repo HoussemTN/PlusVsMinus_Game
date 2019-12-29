@@ -49,7 +49,7 @@ class _SinglePlayerState extends State<SinglePlayer>
                       color: Colors.yellowAccent,
                       onPressed: () {
                         globals.player.play('clic.wav');
-                        Navigator.of(context).pop();
+                        Navigator.of(context).pushNamedAndRemoveUntil("Home",(Route<dynamic> route) => false);
                       }),
                 )
               ],
@@ -144,7 +144,8 @@ class _SinglePlayerState extends State<SinglePlayer>
                         ),
                         onPressed: () {
                           globals.player.play('clic.wav');
-                          Navigator.pushNamed(context, 'SingleGameEasy');
+                        //  Navigator.pushNamed(context, 'SingleGameEasy');
+                          Navigator.of(context).pushNamedAndRemoveUntil("SingleGameEasy",(Route<dynamic> route) => false);
                         },
                       ),
                     ),
@@ -194,7 +195,8 @@ class _SinglePlayerState extends State<SinglePlayer>
                         ),
                         onPressed: () {
                           globals.player.play('clic.wav');
-                          Navigator.pushNamed(context, 'SingleGameMedium');
+                         // Navigator.pushNamed(context, 'SingleGameMedium');
+                          Navigator.of(context).pushNamedAndRemoveUntil("SingleGameMedium",(Route<dynamic> route) => false);
                         },
                       ),
                     ),
@@ -244,7 +246,8 @@ class _SinglePlayerState extends State<SinglePlayer>
                         ),
                         onPressed: () {
                           globals.player.play('clic.wav');
-                          Navigator.pushNamed(context, 'SingleGameHard');
+                        //  Navigator.pushNamed(context, 'SingleGameHard');
+                          Navigator.of(context).pushNamedAndRemoveUntil("SingleGameHard",(Route<dynamic> route) => false);
                         },
                       ),
                     ),

@@ -180,7 +180,8 @@ class _SingleGameMediumState extends State<SingleGameMedium> {
                         color: Colors.yellowAccent,
                         onPressed: () {
                           globals.player.play('clic.wav');
-                          Navigator.of(context).pop();
+                          //Navigator.of(context).pop();
+                          Navigator.of(context).pushNamedAndRemoveUntil("SinglePlayer",(Route<dynamic> route) => false);
                         }),
                   ),
                   Expanded(

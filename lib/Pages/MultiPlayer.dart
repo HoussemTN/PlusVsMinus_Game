@@ -51,7 +51,8 @@ class _MultiPlayerState extends State<MultiPlayer>
                       color: Colors.yellowAccent,
                       onPressed: () {
                         globals.player.play('clic.wav');
-                        Navigator.of(context).pop();
+                       // Navigator.of(context).pop();
+                        Navigator.of(context).pushNamedAndRemoveUntil("Home",(Route<dynamic> route) => false);
                       }),
                 )
               ],
@@ -143,7 +144,8 @@ class _MultiPlayerState extends State<MultiPlayer>
                         ),
                         onPressed: () {
                           globals.player.play('clic.wav');
-                          Navigator.pushNamed(context, 'PlusVsMinus');
+                          //Navigator.pushNamed(context, 'PlusVsMinus');
+                          Navigator.of(context).pushNamedAndRemoveUntil("PlusVsMinus",(Route<dynamic> route) => false);
                         },
                       ),
                     ),
@@ -190,7 +192,8 @@ class _MultiPlayerState extends State<MultiPlayer>
                         ),
                         onPressed: () {
                           globals.player.play('clic.wav');
-                          Navigator.pushNamed(context, 'PlusVsMinus4P');
+                         // Navigator.pushNamed(context, 'PlusVsMinus4P');
+                          Navigator.of(context).pushNamedAndRemoveUntil("PlusVsMinus4P",(Route<dynamic> route) => false);
                         },
                       ),
                     ),

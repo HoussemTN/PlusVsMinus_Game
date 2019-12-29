@@ -47,7 +47,8 @@ class _PlusVsMinus4PState extends State<PlusVsMinus4P> {
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
           onPressed: () {
-            Navigator.pushNamed(context, "Home");
+            //Navigator.pushNamed(context, "Home");
+            Navigator.of(context).pushNamedAndRemoveUntil("Home",(Route<dynamic> route) => false);
           },
           color: Color.fromRGBO(0, 179, 134, 1.0),
           radius: BorderRadius.circular(0.0),

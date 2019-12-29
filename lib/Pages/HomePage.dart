@@ -64,7 +64,9 @@ class _HomePageState extends State<HomePage>
                     ),
                     onPressed: () {
                       globals.player.play('clic.wav');
-                      Navigator.pushNamed(context, "SinglePlayer");
+                      //Navigator.pushNamed(context, "SinglePlayer");
+                      //Remove all routes except the new "SinglePlayer"
+                      Navigator.of(context).pushNamedAndRemoveUntil("SinglePlayer",(Route<dynamic> route) => false);
                     },
                   ),
                 ),
@@ -89,7 +91,8 @@ class _HomePageState extends State<HomePage>
                     ),
                     onPressed: () {
                       globals.player.play('clic.wav');
-                      Navigator.pushNamed(context, "Gamemode");
+                      //Navigator.pushNamed(context, "Gamemode");
+                      Navigator.of(context).pushNamedAndRemoveUntil("Gamemode",(Route<dynamic> route) => false);
                     },
                   ),
                 ),
